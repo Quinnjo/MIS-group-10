@@ -7,11 +7,11 @@ public class Patient {
     float copay;
     InsuranceType insuranceType;
     PatientType patientType;
-    enum InsuranceType {
+    public enum InsuranceType { //override toString?
         PRIVATE,
         GOVERNMENT
     }
-    enum PatientType {
+    public enum PatientType { //override toString?
         PEDIATRIC,
         ADULT,
         GERIATRIC
@@ -60,35 +60,98 @@ public class Patient {
         return patientType;
     }
 
-    public void setLastName(String lastName) {
+    public void updateLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public void setFirstName(String firstName) {
+    public void updateFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public void setAddress(String address) {
+    public void updateAddress(String address) {
         this.address = address;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void updatePhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void updateDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void setCopay(float copay) {
+    public void updateCopay(float copay) {
         this.copay = copay;
     }
 
-    public void setInsuranceType(InsuranceType insuranceType) {
+    public void updateInsuranceType(InsuranceType insuranceType) {
         this.insuranceType = insuranceType;
     }
 
-    public void setPatientType(PatientType patientType) {
+    public void updatePatientType(PatientType patientType) {
         this.patientType = patientType;
+    }
+
+    public class MedicalConditions {
+        String name;
+        String phoneNumber;
+        Allergies allergies;
+        Illnesses illnesses;
+        enum Allergies { //toString?
+            FOOD,
+            MEDICATION,
+            SEASONAL,
+            NONE,
+            OTHER
+        }
+        enum Illnesses { //toString?
+            DIABETES,
+            CHD,
+            ASTHMA,
+            NONE,
+            OTHER
+        }
+
+        public MedicalConditions(String name, String phoneNumber, Allergies allergies, Illnesses illnesses) {
+            this.name = name;
+            this.phoneNumber = phoneNumber;
+            this.allergies = allergies;
+            this.illnesses = illnesses;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void updateName(String name) {
+            this.name = name;
+        }
+
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void updatePhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+
+        public Allergies getAllergies() {
+            return allergies;
+        }
+
+        public void updateAllergies(Allergies allergies) {
+            this.allergies = allergies;
+        }
+
+        public Illnesses getIllnesses() {
+            return illnesses;
+        }
+
+        public void updateIllnesses(Illnesses illnesses) {
+            this.illnesses = illnesses;
+        }
+    }
+    public void printVariables() {
+        //stuff
     }
 }
