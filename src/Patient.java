@@ -5,13 +5,27 @@ public class Patient {
     String phoneNumber;
     String dateOfBirth;
     float copay;
-    public Patient(String lastName, String firstName, String address, String phoneNumber, String dateOfBirth, float copay) {
+    InsuranceType insuranceType;
+    PatientType patientType;
+    enum InsuranceType {
+        PRIVATE,
+        GOVERNMENT
+    }
+    enum PatientType {
+        PEDIATRIC,
+        ADULT,
+        GERIATRIC
+    }
+
+    public Patient(String lastName, String firstName, String address, String phoneNumber, String dateOfBirth, float copay, InsuranceType insuranceType, PatientType patientType) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
         this.copay = copay;
+        this.insuranceType = insuranceType;
+        this.patientType = patientType;
     }
 
     public String getLastName() {
@@ -38,13 +52,43 @@ public class Patient {
         return copay;
     }
 
-    enum insuranceType {
-        PRIVATE,
-        GOVERNMENT
+    public InsuranceType getInsuranceType() {
+        return insuranceType;
     }
-    enum patientType {
-        PEDIATRIC,
-        ADULT,
-        GERIATRIC
+
+    public PatientType getPatientType() {
+        return patientType;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setCopay(float copay) {
+        this.copay = copay;
+    }
+
+    public void setInsuranceType(InsuranceType insuranceType) {
+        this.insuranceType = insuranceType;
+    }
+
+    public void setPatientType(PatientType patientType) {
+        this.patientType = patientType;
     }
 }
