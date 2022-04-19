@@ -151,7 +151,14 @@ public class Patient {
             this.illnesses = illnesses;
         }
     }
-    public void printVariables() {
-        //stuff
+    public void printVariables(Patient p) {
+        System.out.println("First Name: "+p.getFirstName());
+        System.out.println("Last Name: "+p.getLastName());
+        System.out.println("Address: "+p.getAddress());
+        System.out.println("Phone Number: "+p.getPhoneNumber());
+        System.out.println("Date of Birth: "+p.getDateOfBirth());
+        System.out.println("Copay: "+p.getCopay());
+        System.out.println("Insurance Type: "+p.getInsuranceType());
+        System.out.println("Patient Type: "+p.getPatientType());
     }
 }
