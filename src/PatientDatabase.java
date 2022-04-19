@@ -1,7 +1,7 @@
 /*
  * The patient database class
  */
-package src;
+
 import java.util.ArrayList;
 import java.lang.Exception;
 
