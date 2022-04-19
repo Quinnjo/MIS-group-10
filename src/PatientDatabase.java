@@ -103,8 +103,15 @@ public class PatientDatabase {
     John Doe - 123-456-7890
     Jane Doe - 909-909-9090
      */
-    String physicianReport() {
-        return null;
+    String physicianReport(String physicianName) {
+        String result = "";
+        for(Patient p : patientList) {
+            if(p.medicalConditions.name == physicianName) {
+                result = result + p.getFirstName() + " " + p.getLastName() + " - " + p.getPhoneNumber();
+                result += "\n";
+            }
+        }
+        return result;
     }
 
     String patientTypeReport() {
@@ -125,7 +132,7 @@ public class PatientDatabase {
     // Exception to be thrown if a database query cannot find the desired Patient object
     public class PatientNotFoundException extends Exception {
         public PatientNotFoundException() {
-
+            super();
         }
 
         public PatientNotFoundException(String message) {

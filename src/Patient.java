@@ -104,8 +104,8 @@ public class Patient {
     }
 
     public class MedicalConditions {
-        String name;
-        String phoneNumber;
+        String name; // name of physician
+        String phoneNumber; // phone number of physician
         Allergies allergies;
         Illnesses illnesses;
         public enum Allergies { //toString?
