@@ -2,6 +2,7 @@
  * The patient database class
  */
 import java.util.ArrayList;
+import java.lang.Exception;
 
 public class PatientDatabase {
     final int MAX_PATIENT_NUMBER = 100;
@@ -22,7 +23,9 @@ public class PatientDatabase {
         patientList.add(patient);
     }
 
-    public void deleteProfile(String lastName, String dateOfBirth) {
+    // This should throw an exception if a Patient is not found
+    // throws PatientNotFoundException
+    public void deleteProfile(String lastName, String dateOfBirth) throws PatientNotFoundException {
         // delete patient profile from database
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
@@ -31,11 +34,14 @@ public class PatientDatabase {
                 return;
             }
         }
+        // if the patient is not found, throw an exception
+        throw new PatientNotFoundException("No patient was found with query: LastName=" + lastName + ", DOB=" + dateOfBirth);
     }
 
     // This method should take another parameter that holds the updated patient information
     // But what type should that parameter be? Another patient class?
     // Remember: a patient's date of birth may not be modified!
+
     public void updateProfile(String lastName, String dateOfBirth, Patient newPatient) {
         // TODO: update patient profile
         // TODO: make methods to update specific patient attributes?
@@ -56,7 +62,8 @@ public class PatientDatabase {
         // should we raise an exception?
     }
 
-    public Patient findPatient(String lastName, String dateOfBirth) {
+    // throws PatientNotFoundException
+    public Patient findPatient(String lastName, String dateOfBirth) throws PatientNotFoundException {
         // TODO: find patient based off of parameters, and display patient
         // What does display mean? What is the return type of this function?
         // For now, this method returns the patient that we seek
@@ -68,7 +75,7 @@ public class PatientDatabase {
         }
         // we couldn't find a patient
         // return null? raise an exception?
-        return null;
+        throw new PatientNotFoundException("No patient was found with query: LastName=" + lastName + ", DOB=" + dateOfBirth);
     }
 
     /*
@@ -76,4 +83,52 @@ public class PatientDatabase {
      * We should be able to search patients based on doctor, insurance type, etc.
      * and display these patients in search results
      */
+
+    // ArrayList<Patient>
+    /*
+    In addition to the above actions for the individual patient profiles, additional functions allow summary
+    reports to be compiled. These reports can be generated for each of the following fields individually –
+    physician, patient type, insurance type, allergies, and illnesses.
+    For this assignment, you need not consider a combination
+    of these fields.
+
+    These methods return a String list with patient names and phone numbers
+    If no patients match, then return an empty String
+     */
+
+
+    /*
+    Example format:
+    John Doe - 123-456-7890
+    Jane Doe - 909-909-9090
+     */
+    String physicianReport() {
+        return null;
+    }
+
+    String patientTypeReport() {
+        return null;
+    }
+
+    String insuranceTypeReport() {
+        return null;
+    }
+
+    String allergiesReport() {
+        return null;
+    }
+    String illnessReport() {
+        return null;
+    }
+
+    // Exception to be thrown if a database query cannot find the desired Patient object
+    public class PatientNotFoundException extends Exception {
+        public PatientNotFoundException() {
+
+        }
+
+        public PatientNotFoundException(String message) {
+            super(message);
+        }
+    }
 }

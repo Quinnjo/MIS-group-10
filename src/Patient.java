@@ -107,14 +107,14 @@ public class Patient {
         String phoneNumber;
         Allergies allergies;
         Illnesses illnesses;
-        enum Allergies { //toString?
+        public enum Allergies { //toString?
             FOOD,
             MEDICATION,
             SEASONAL,
             NONE,
             OTHER
         }
-        enum Illnesses { //toString?
+        public enum Illnesses { //toString?
             DIABETES,
             CHD,
             ASTHMA,
