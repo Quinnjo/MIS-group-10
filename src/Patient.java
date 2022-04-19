@@ -7,17 +7,18 @@ public class Patient {
     float copay;
     InsuranceType insuranceType;
     PatientType patientType;
-    public enum InsuranceType { //override toString?
+    public enum InsuranceType {
         PRIVATE,
         GOVERNMENT
     }
-    public enum PatientType { //override toString?
+    public enum PatientType {
         PEDIATRIC,
         ADULT,
         GERIATRIC
     }
+    MedicalConditions medicalConditions;
 
-    public Patient(String lastName, String firstName, String address, String phoneNumber, String dateOfBirth, float copay, InsuranceType insuranceType, PatientType patientType) {
+    public Patient(String lastName, String firstName, String address, String phoneNumber, String dateOfBirth, float copay, InsuranceType insuranceType, PatientType patientType, MedicalConditions medicalConditions) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
@@ -26,6 +27,7 @@ public class Patient {
         this.copay = copay;
         this.insuranceType = insuranceType;
         this.patientType = patientType;
+        this.medicalConditions = medicalConditions;
     }
 
     public String getLastName() {
@@ -58,6 +60,14 @@ public class Patient {
 
     public PatientType getPatientType() {
         return patientType;
+    }
+
+    public MedicalConditions getMedicalConditions() {
+        return medicalConditions;
+    }
+
+    public void updateMedicalConditions(MedicalConditions medicalConditions) {
+        this.medicalConditions = medicalConditions;
     }
 
     public void updateLastName(String lastName) {
@@ -151,14 +161,19 @@ public class Patient {
             this.illnesses = illnesses;
         }
     }
-    public void printVariables(Patient p) {
-        System.out.println("First Name: "+p.getFirstName());
-        System.out.println("Last Name: "+p.getLastName());
-        System.out.println("Address: "+p.getAddress());
-        System.out.println("Phone Number: "+p.getPhoneNumber());
-        System.out.println("Date of Birth: "+p.getDateOfBirth());
-        System.out.println("Copay: "+p.getCopay());
-        System.out.println("Insurance Type: "+p.getInsuranceType());
-        System.out.println("Patient Type: "+p.getPatientType());
+
+    @Override
+    public String toString() {
+        return "Patient Details:\n" +
+                "First Name: " + firstName + '\n' +
+                "Last Name: " + lastName + '\n' +
+                "Address: " + address + '\n' +
+                "Phone Number: " + phoneNumber + '\n' +
+                "Date of Birth: " + dateOfBirth + '\n' +
+                "Copay: " + copay + '\n' +
+                "Insurance Type: " + insuranceType + '\n' +
+                "Patient Type: " + patientType + '\n' +
+                "Medical Conditions: " + medicalConditions +
+                '}';
     }
 }
