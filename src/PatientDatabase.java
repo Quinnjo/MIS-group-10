@@ -26,7 +26,7 @@ public class PatientDatabase {
         // delete patient profile from database
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
-            if(p.lastName == lastName && p.dateOfBirth == dateOfBirth) {
+            if(p.getLastName() == lastName && p.getDateOfBirth() == dateOfBirth) {
                 patientList.remove(i);
                 return;
             }
@@ -41,8 +41,8 @@ public class PatientDatabase {
         // TODO: make methods to update specific patient attributes?
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
-            if(p.lastName == lastName && p.dateOfBirth == dateOfBirth) {
-                if(dateOfBirth == newPatient.dateOfBirth) {
+            if(p.getLastName() == lastName && p.getDateOfBirth() == dateOfBirth) {
+                if(dateOfBirth == newPatient.getDateOfBirth()) {
                     patientList.set(i, newPatient);
                     return;
                 } else {
@@ -62,7 +62,7 @@ public class PatientDatabase {
         // For now, this method returns the patient that we seek
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
-            if(p.lastName == lastName && p.dateOfBirth == dateOfBirth) {
+            if(p.getLastName() == lastName && p.getDateOfBirth() == dateOfBirth) {
                 return patientList.get(i);
             }
         }
