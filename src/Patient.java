@@ -177,4 +177,13 @@ public class Patient {
                 "Medical Conditions: " + medicalConditions +
                 '}';
     }
+
+    /*
+    Example format:
+    John Doe - 123-456-7890
+    Jane Doe - 909-909-9090
+     */
+    public String shortFormat() {
+        return getFirstName() + " " + getLastName() + " - " + getPhoneNumber();
+    }
 }

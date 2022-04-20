@@ -103,30 +103,61 @@ public class PatientDatabase {
     John Doe - 123-456-7890
     Jane Doe - 909-909-9090
      */
+
+
     String physicianReport(String physicianName) {
         String result = "";
         for(Patient p : patientList) {
             if(p.medicalConditions.name == physicianName) {
-                result = result + p.getFirstName() + " " + p.getLastName() + " - " + p.getPhoneNumber();
+                result = result + p.shortFormat();
                 result += "\n";
             }
         }
         return result;
     }
 
-    String patientTypeReport() {
-        return null;
+    String patientTypeReport(Patient.PatientType patientType) {
+        String result = "";
+        for(Patient p : patientList) {
+            if(p.patientType == patientType) {
+                result = result + p.shortFormat();
+                result += "\n";
+            }
+        }
+        return result;
     }
 
-    String insuranceTypeReport() {
-        return null;
+    String insuranceTypeReport(Patient.InsuranceType insuranceType) {
+        String result = "";
+        for(Patient p : patientList) {
+            if(p.insuranceType == insuranceType) {
+                result = result + p.shortFormat();
+                result += "\n";
+            }
+        }
+        return result;
     }
 
-    String allergiesReport() {
-        return null;
+    String allergiesReport(Patient.MedicalConditions.Allergies allergies) {
+        String result = "";
+        for(Patient p : patientList) {
+            if(p.medicalConditions.allergies == allergies) {
+                result = result + p.shortFormat();
+                result += "\n";
+            }
+        }
+        return result;
     }
-    String illnessReport() {
-        return null;
+
+    String illnessesReport(Patient.MedicalConditions.Illnesses illnesses) {
+        String result = "";
+        for(Patient p : patientList) {
+            if(p.medicalConditions.illnesses == illnesses) {
+                result = result + p.shortFormat();
+                result += "\n";
+            }
+        }
+        return result;
     }
 
     // Exception to be thrown if a database query cannot find the desired Patient object
