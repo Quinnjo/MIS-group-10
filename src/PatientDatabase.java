@@ -2,8 +2,10 @@
  * The patient database class
  */
 
+import java.io.*;
 import java.util.ArrayList;
 import java.lang.Exception;
+//import java.io.*;
 
 public class PatientDatabase {
     final int MAX_PATIENT_NUMBER = 100;
@@ -17,6 +19,48 @@ public class PatientDatabase {
         patientList = new ArrayList<Patient>(); // make
 
         // TODO: open and process the file
+    }
+
+    /*
+     * Using the object's filepath, read patients into a database
+     * If we run into an error processing the patient, throw an exception
+     * The patient format should be akin to the schema provided in the project specifications
+     * This format schema can be found in /data/schema.txt
+     */
+    protected void readFromFile() throws DatabaseFileException {
+        File file = new File(filePath);
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            // TODO: continue reading
+        } catch(FileNotFoundException e) {
+            throw new DatabaseFileException("File at path: '" + filePath + "' could not be opened!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // read Patient from a BufferedReader
+    // assumes that the BufferedReader has at least 11 lines
+    // enough to contain the full schema
+    protected Patient readPatient(BufferedReader br) throws IOException {
+        String firstName = br.readLine();
+        String lastName = br.readLine();
+        String address = br.readLine();
+        String phoneNumber = br.readLine();
+        String dateOfBirth = br.readLine();
+        float copay = Float.parseFloat(br.readLine());
+        Patient.InsuranceType insuranceType = Patient.parseInsuranceType(br.readLine());
+        Patient.PatientType patientType = Patient.parsePatientType(br.readLine());
+        String physicianName = br.readLine();
+        String physicianNumber = br.readLine();
+        Patient.MedicalConditions.Allergies allergies =
+                Patient.MedicalConditions.parseAllergies(br.readLine());
+        Patient.MedicalConditions.Illnesses illnesses =
+                Patient.MedicalConditions.parseIllnesses(br.readLine());
+        return new Patient(lastName, firstName, address, phoneNumber,
+                dateOfBirth, copay, insuranceType, patientType,
+                new Patient.MedicalConditions(physicianName, physicianNumber,
+                    allergies, illnesses));
     }
 
     public void insertProfile(Patient patient) {
@@ -167,6 +211,17 @@ public class PatientDatabase {
         }
 
         public PatientNotFoundException(String message) {
+            super(message);
+        }
+    }
+
+    // Exception to be thrown if patients in the file at filepath are not formatted correctly
+    public class DatabaseFileException extends  Exception {
+        public DatabaseFileException() {
+            super();
+        }
+
+        public DatabaseFileException(String message) {
             super(message);
         }
     }
