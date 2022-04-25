@@ -2,6 +2,7 @@ First Name
 Last Name
 Address
 Phone Number
+DOB
 Insurance
 Co-Pay
 Patient Type
