@@ -2,6 +2,7 @@
  * The patient database class
  */
 
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
 import java.lang.Exception;
@@ -19,6 +20,11 @@ public class PatientDatabase {
         patientList = new ArrayList<Patient>(); // make
 
         // TODO: open and process the file
+        try {
+            readFromFile();
+        } catch(DatabaseFileException e) {
+            e.printStackTrace();
+        }
     }
 
     /*
@@ -31,7 +37,11 @@ public class PatientDatabase {
         File file = new File(filePath);
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
-            // TODO: continue reading
+            // While the buffered reader has input, insert new profiles
+            while(br.ready()) {
+                insertProfile(readPatient(br));
+            }
+            br.close();
         } catch(FileNotFoundException e) {
             throw new DatabaseFileException("File at path: '" + filePath + "' could not be opened!");
         } catch (IOException e) {
@@ -57,10 +67,49 @@ public class PatientDatabase {
                 Patient.MedicalConditions.parseAllergies(br.readLine());
         Patient.MedicalConditions.Illnesses illnesses =
                 Patient.MedicalConditions.parseIllnesses(br.readLine());
-        return new Patient(lastName, firstName, address, phoneNumber,
+        Patient patient = new Patient(lastName, firstName, address, phoneNumber,
                 dateOfBirth, copay, insuranceType, patientType,
                 new Patient.MedicalConditions(physicianName, physicianNumber,
-                    allergies, illnesses));
+                        allergies, illnesses));
+        return patient;
+    }
+
+    protected void writeToFile() {
+        File file = new File(filePath);
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            for(Patient p : patientList) {
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Writes a Patient p to BufferedWriter bw according to the schema
+    protected void writePatient(Patient p, BufferedWriter bw) throws IOException {
+        bw.write(p.getFirstName());
+        bw.newLine();
+        bw.write(p.getLastName());
+        bw.newLine();
+        bw.write(p.getAddress());
+        bw.newLine();
+        bw.write(p.getDateOfBirth());
+        bw.newLine();
+        bw.write(String.valueOf(p.getCopay()));
+        bw.newLine();
+        bw.write(p.getInsuranceType().name());
+        bw.newLine();
+        bw.write(p.getPatientType().name());
+        bw.newLine();
+        bw.write(p.getMedicalConditions().getName());
+        bw.newLine();
+        bw.write(p.getMedicalConditions().getPhoneNumber());
+        bw.newLine();
+        bw.write(p.getMedicalConditions().getAllergies().name());
+        bw.newLine();
+        bw.write(p.getMedicalConditions().getIllnesses().name());
+        bw.newLine();
     }
 
     public void insertProfile(Patient patient) {
@@ -109,7 +158,7 @@ public class PatientDatabase {
 
     // throws PatientNotFoundException
     public Patient findPatient(String lastName, String dateOfBirth) throws PatientNotFoundException {
-        // TODO: find patient based off of parameters, and display patient
+        // Find patient based off of parameters, and display patient
         // What does display mean? What is the return type of this function?
         // For now, this method returns the patient that we seek
         for(int i = 0; i < patientList.size(); i++) {
@@ -124,7 +173,7 @@ public class PatientDatabase {
     }
 
     /*
-     * TODO: Summary report methods
+     * Summary report methods
      * We should be able to search patients based on doctor, insurance type, etc.
      * and display these patients in search results
      */
