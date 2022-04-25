@@ -1,8 +1,7 @@
 public class DatabaseRunner {
     public static void main(String[] args) {
         PatientDatabase database =
-                new PatientDatabase(
-                        "");
+                new PatientDatabase(args[0]);
         try {
             Patient hopkins = database.findPatient("Hopkins", "1984-9-12");
             //System.out.println(hopkins);
