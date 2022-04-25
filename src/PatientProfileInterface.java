@@ -390,7 +390,7 @@ public class PatientProfileInterface extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PatientProfileInterface().setVisible(true);
+                new PatientProfileInterface(new PatientDatabase("" /* TODO: filepath! */)).setVisible(true);
             }
         });
     }
