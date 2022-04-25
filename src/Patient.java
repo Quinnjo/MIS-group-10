@@ -95,6 +95,13 @@ public class Patient {
             this.illnesses = illnesses;
         }
 
+        /*
+        @Override
+        public String toString() {
+            return null;
+        }
+        */
+
         public String getName() {
             return name;
         }
@@ -222,10 +229,12 @@ public class Patient {
                 "Phone Number: " + phoneNumber + '\n' +
                 "Date of Birth: " + dateOfBirth + '\n' +
                 "Copay: " + copay + '\n' +
-                "Insurance Type: " + insuranceType + '\n' +
-                "Patient Type: " + patientType + '\n' +
-                "Medical Conditions: " + medicalConditions +
-                '}';
+                "Insurance Type: " + insuranceType.name() + '\n' +
+                "Patient Type: " + patientType.name() + '\n' +
+                "Physician Name: " + medicalConditions.getName() + '\n' +
+                "Physician Phone Number: " + medicalConditions.getPhoneNumber() + '\n' +
+                "Allergies: " + medicalConditions.getAllergies().name() + '\n' +
+                "Illnesses: " + medicalConditions.getIllnesses().name();
     }
 
     /*
@@ -234,6 +243,6 @@ public class Patient {
     Jane Doe - 909-909-9090
      */
     public String shortFormat() {
-        return getFirstName() + " " + getLastName() + " - " + getPhoneNumber();
+        return getFirstName() + " " + getLastName() + " (" + getDateOfBirth() + ") - " + getPhoneNumber();
     }
 }
