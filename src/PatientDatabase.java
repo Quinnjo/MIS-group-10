@@ -9,17 +9,17 @@ import java.lang.Exception;
 //import java.io.*;
 
 public class PatientDatabase {
-    final int MAX_PATIENT_NUMBER = 100;
+    //final int MAX_PATIENT_NUMBER = 100;
 
     private ArrayList<Patient> patientList;
     private int numPatients;
-    String filePath;
+    private String filePath;
 
     public PatientDatabase(String filePath) {
         this.filePath = filePath;
         patientList = new ArrayList<Patient>(); // make
 
-        // TODO: open and process the file
+        // open and process the file
         try {
             readFromFile();
         } catch(DatabaseFileException e) {
@@ -33,7 +33,7 @@ public class PatientDatabase {
      * The patient format should be akin to the schema provided in the project specifications
      * This format schema can be found in /data/schema.txt
      */
-    protected void readFromFile() throws DatabaseFileException {
+    private void readFromFile() throws DatabaseFileException {
         File file = new File(filePath);
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -52,14 +52,14 @@ public class PatientDatabase {
     // read Patient from a BufferedReader
     // assumes that the BufferedReader has at least 11 lines
     // enough to contain the full schema
-    protected Patient readPatient(BufferedReader br) throws IOException {
+    private Patient readPatient(BufferedReader br) throws IOException {
         String firstName = br.readLine();
         String lastName = br.readLine();
         String address = br.readLine();
         String phoneNumber = br.readLine();
         String dateOfBirth = br.readLine();
-        float copay = Float.parseFloat(br.readLine());
         Patient.InsuranceType insuranceType = Patient.parseInsuranceType(br.readLine());
+        float copay = Float.parseFloat(br.readLine());
         Patient.PatientType patientType = Patient.parsePatientType(br.readLine());
         String physicianName = br.readLine();
         String physicianNumber = br.readLine();
@@ -74,12 +74,12 @@ public class PatientDatabase {
         return patient;
     }
 
-    protected void writeToFile() {
+    private void writeToFile() {
         File file = new File(filePath);
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             for(Patient p : patientList) {
-
+                writePatient(p, bw);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class PatientDatabase {
     }
 
     // Writes a Patient p to BufferedWriter bw according to the schema
-    protected void writePatient(Patient p, BufferedWriter bw) throws IOException {
+    private void writePatient(Patient p, BufferedWriter bw) throws IOException {
         bw.write(p.getFirstName());
         bw.newLine();
         bw.write(p.getLastName());
@@ -123,7 +123,7 @@ public class PatientDatabase {
         // delete patient profile from database
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
-            if(p.getLastName() == lastName && p.getDateOfBirth() == dateOfBirth) {
+            if(p.getLastName().equalsIgnoreCase(lastName) && p.getDateOfBirth().equalsIgnoreCase(dateOfBirth)) {
                 patientList.remove(i);
                 return;
             }
@@ -141,8 +141,8 @@ public class PatientDatabase {
         // TODO: make methods to update specific patient attributes?
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
-            if(p.getLastName() == lastName && p.getDateOfBirth() == dateOfBirth) {
-                if(dateOfBirth == newPatient.getDateOfBirth()) {
+            if(p.getLastName().equalsIgnoreCase(lastName) && p.getDateOfBirth().equalsIgnoreCase(dateOfBirth)) {
+                if(dateOfBirth.equalsIgnoreCase(newPatient.getDateOfBirth())) {
                     patientList.set(i, newPatient);
                     return;
                 } else {
@@ -163,7 +163,7 @@ public class PatientDatabase {
         // For now, this method returns the patient that we seek
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
-            if(p.getLastName() == lastName && p.getDateOfBirth() == dateOfBirth) {
+            if(p.getLastName().equalsIgnoreCase(lastName) && p.getDateOfBirth().equalsIgnoreCase(dateOfBirth)) {
                 return patientList.get(i);
             }
         }
@@ -198,10 +198,10 @@ public class PatientDatabase {
      */
 
 
-    String physicianReport(String physicianName) {
+    public String physicianReport(String physicianName) {
         String result = "";
         for(Patient p : patientList) {
-            if(p.medicalConditions.name == physicianName) {
+            if(p.medicalConditions.name.equalsIgnoreCase(physicianName)) {
                 result = result + p.shortFormat();
                 result += "\n";
             }
@@ -209,7 +209,7 @@ public class PatientDatabase {
         return result;
     }
 
-    String patientTypeReport(Patient.PatientType patientType) {
+    public String patientTypeReport(Patient.PatientType patientType) {
         String result = "";
         for(Patient p : patientList) {
             if(p.patientType == patientType) {
@@ -220,7 +220,7 @@ public class PatientDatabase {
         return result;
     }
 
-    String insuranceTypeReport(Patient.InsuranceType insuranceType) {
+    public String insuranceTypeReport(Patient.InsuranceType insuranceType) {
         String result = "";
         for(Patient p : patientList) {
             if(p.insuranceType == insuranceType) {
@@ -231,7 +231,7 @@ public class PatientDatabase {
         return result;
     }
 
-    String allergiesReport(Patient.MedicalConditions.Allergies allergies) {
+    public String allergiesReport(Patient.MedicalConditions.Allergies allergies) {
         String result = "";
         for(Patient p : patientList) {
             if(p.medicalConditions.allergies == allergies) {
@@ -242,7 +242,7 @@ public class PatientDatabase {
         return result;
     }
 
-    String illnessesReport(Patient.MedicalConditions.Illnesses illnesses) {
+    public String illnessesReport(Patient.MedicalConditions.Illnesses illnesses) {
         String result = "";
         for(Patient p : patientList) {
             if(p.medicalConditions.illnesses == illnesses) {
