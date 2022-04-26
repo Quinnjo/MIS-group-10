@@ -15,16 +15,12 @@ public class PatientDatabase {
     private int numPatients;
     private String filePath;
 
-    public PatientDatabase(String filePath) {
+    public PatientDatabase(String filePath) throws DatabaseFileException {
         this.filePath = filePath;
         patientList = new ArrayList<Patient>(); // make
 
         // open and process the file
-        try {
-            readFromFile();
-        } catch(DatabaseFileException e) {
-            e.printStackTrace();
-        }
+        readFromFile();
     }
 
     /*
@@ -45,7 +41,7 @@ public class PatientDatabase {
         } catch(FileNotFoundException e) {
             throw new DatabaseFileException("File at path: '" + filePath + "' could not be opened!");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new DatabaseFileException("Something went wrong when loading the file...");
         }
     }
 
@@ -74,13 +70,14 @@ public class PatientDatabase {
         return patient;
     }
 
-    private void writeToFile() {
+    public void writeToFile() {
         File file = new File(filePath);
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             for(Patient p : patientList) {
                 writePatient(p, bw);
             }
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -94,11 +91,13 @@ public class PatientDatabase {
         bw.newLine();
         bw.write(p.getAddress());
         bw.newLine();
+        bw.write(p.getPhoneNumber());
+        bw.newLine();
         bw.write(p.getDateOfBirth());
         bw.newLine();
-        bw.write(String.valueOf(p.getCopay()));
-        bw.newLine();
         bw.write(p.getInsuranceType().name());
+        bw.newLine();
+        bw.write(String.valueOf(p.getCopay()));
         bw.newLine();
         bw.write(p.getPatientType().name());
         bw.newLine();
@@ -110,6 +109,7 @@ public class PatientDatabase {
         bw.newLine();
         bw.write(p.getMedicalConditions().getIllnesses().name());
         bw.newLine();
+        bw.flush();
     }
 
     public void insertProfile(Patient patient) {
@@ -136,8 +136,7 @@ public class PatientDatabase {
     // But what type should that parameter be? Another patient class?
     // Remember: a patient's date of birth may not be modified!
 
-    public void updateProfile(String lastName, String dateOfBirth, Patient newPatient) {
-        // TODO: update patient profile
+    public void updateProfile(String lastName, String dateOfBirth, Patient newPatient) throws PatientNotFoundException {
         // TODO: make methods to update specific patient attributes?
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
@@ -149,11 +148,13 @@ public class PatientDatabase {
                     // you can't update a patient's date of birth!
                     // we shouldn't modify the patient
                     // should we raise an exception?
+                    throw new PatientNotFoundException("You may not update a patient's last name or date of birth!");
                 }
             }
         }
         // if we reach here, no patient was found
         // should we raise an exception?
+        throw new PatientNotFoundException("No patient was found with query: LastName=" + lastName + ", DOB=" + dateOfBirth);
     }
 
     // throws PatientNotFoundException
