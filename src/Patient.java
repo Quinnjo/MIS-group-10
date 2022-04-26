@@ -1,3 +1,10 @@
+/*
+Class that stores all the information for a Patient object.
+Includes first/last name, address, phone number, date of birth, copay, insurance type, patient type and a medical conditions class.
+The medical conditions class contains the information relating to the medical conditions the patient has.
+This includes physician name, phone number, and the allergies/illnesses the patient has.
+*/
+
 
 public class Patient {
     String lastName;
@@ -219,7 +226,7 @@ public class Patient {
         this.patientType = patientType;
     }
 
-
+    //This overrides the toString method to print a readable output when returning a patient
     @Override
     public String toString() {
         return "Patient Details:\n" +
