@@ -116,6 +116,7 @@ public class PatientDatabase {
     public void insertProfile(Patient patient) {
         // insert patient into database
         patientList.add(patient);
+        writeToFile();
     }
 
     // This should throw an exception if a Patient is not found
@@ -126,6 +127,7 @@ public class PatientDatabase {
             Patient p = patientList.get(i);
             if(p.getLastName().equalsIgnoreCase(lastName) && p.getDateOfBirth().equalsIgnoreCase(dateOfBirth)) {
                 patientList.remove(i);
+                writeToFile();
                 return;
             }
         }
@@ -144,12 +146,13 @@ public class PatientDatabase {
             if(p.getLastName().equalsIgnoreCase(lastName) && p.getDateOfBirth().equalsIgnoreCase(dateOfBirth)) {
                 if(dateOfBirth.equalsIgnoreCase(newPatient.getDateOfBirth())) {
                     patientList.set(i, newPatient);
+                    writeToFile();
                     return;
                 } else {
                     // you can't update a patient's date of birth!
                     // we shouldn't modify the patient
                     // should we raise an exception?
-                    throw new PatientNotFoundException("You may not update a patient's last name or date of birth!");
+                    throw new PatientNotFoundException("You may not update a patient's date of birth!");
                 }
             }
         }
