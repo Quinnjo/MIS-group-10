@@ -6,15 +6,15 @@ import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
 import java.lang.Exception;
-//import java.io.*;
 
 public class PatientDatabase {
-    //final int MAX_PATIENT_NUMBER = 100;
 
     private ArrayList<Patient> patientList;
     private int numPatients;
     private String filePath;
 
+    // Constructor
+    // takes a filePath that will serve as the file representation for the database
     public PatientDatabase(String filePath) throws DatabaseFileException {
         this.filePath = filePath;
         patientList = new ArrayList<Patient>(); // make
@@ -70,6 +70,7 @@ public class PatientDatabase {
         return patient;
     }
 
+    // Saves the present state of the database to the file at filePath
     public void writeToFile() {
         File file = new File(filePath);
         try {
@@ -178,26 +179,11 @@ public class PatientDatabase {
      * We should be able to search patients based on doctor, insurance type, etc.
      * and display these patients in search results
      */
-
-    // ArrayList<Patient>
     /*
-    In addition to the above actions for the individual patient profiles, additional functions allow summary
-    reports to be compiled. These reports can be generated for each of the following fields individually –
-    physician, patient type, insurance type, allergies, and illnesses.
-    For this assignment, you need not consider a combination
-    of these fields.
-
-    These methods return a String list with patient names and phone numbers
-    If no patients match, then return an empty String
-     */
-
-
-    /*
-    Example format:
+     * Example format:
     John Doe - 123-456-7890
     Jane Doe - 909-909-9090
      */
-
 
     public String physicianReport(String physicianName) {
         String result = "";
