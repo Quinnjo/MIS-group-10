@@ -191,7 +191,7 @@ public class PatientDatabase {
     public String physicianReport(String physicianName) {
         String result = "";
         for(Patient p : patientList) {
-            if(p.medicalConditions.name.equalsIgnoreCase(physicianName)) {
+            if(p.getMedicalConditions().getName().equalsIgnoreCase(physicianName)) {
                 result = result + p.shortFormat();
                 result += "\n";
             }
@@ -202,7 +202,7 @@ public class PatientDatabase {
     public String patientTypeReport(Patient.PatientType patientType) {
         String result = "";
         for(Patient p : patientList) {
-            if(p.patientType == patientType) {
+            if(p.getPatientType() == patientType) {
                 result = result + p.shortFormat();
                 result += "\n";
             }
@@ -213,7 +213,7 @@ public class PatientDatabase {
     public String insuranceTypeReport(Patient.InsuranceType insuranceType) {
         String result = "";
         for(Patient p : patientList) {
-            if(p.insuranceType == insuranceType) {
+            if(p.getInsuranceType() == insuranceType) {
                 result = result + p.shortFormat();
                 result += "\n";
             }
@@ -224,7 +224,7 @@ public class PatientDatabase {
     public String allergiesReport(Patient.MedicalConditions.Allergies allergies) {
         String result = "";
         for(Patient p : patientList) {
-            if(p.medicalConditions.allergies == allergies) {
+            if(p.getMedicalConditions().getAllergies() == allergies) {
                 result = result + p.shortFormat();
                 result += "\n";
             }
@@ -235,7 +235,7 @@ public class PatientDatabase {
     public String illnessesReport(Patient.MedicalConditions.Illnesses illnesses) {
         String result = "";
         for(Patient p : patientList) {
-            if(p.medicalConditions.illnesses == illnesses) {
+            if(p.getMedicalConditions().getIllnesses() == illnesses) {
                 result = result + p.shortFormat();
                 result += "\n";
             }

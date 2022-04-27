@@ -7,15 +7,15 @@ This includes physician name, phone number, and the allergies/illnesses the pati
 
 
 public class Patient {
-    String lastName;
-    String firstName;
-    String address;
-    String phoneNumber;
-    String dateOfBirth;
-    float copay;
-    InsuranceType insuranceType;
-    PatientType patientType;
-    MedicalConditions medicalConditions;
+    private String lastName;
+    private String firstName;
+    private String address;
+    private String phoneNumber;
+    private String dateOfBirth;
+    private float copay;
+    private InsuranceType insuranceType;
+    private PatientType patientType;
+    private MedicalConditions medicalConditions;
 
     public enum InsuranceType {
         Private,
@@ -50,10 +50,10 @@ public class Patient {
     }
 
     public static class MedicalConditions {
-        String name; // name of physician
-        String phoneNumber; // phone number of physician
-        Allergies allergies;
-        Illnesses illnesses;
+        private String name; // name of physician
+        private String phoneNumber; // phone number of physician
+        private Allergies allergies;
+        private Illnesses illnesses;
         public enum Allergies {
             Food,
             Medication,
