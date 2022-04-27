@@ -18,7 +18,8 @@ public class ProfileInterface extends javax.swing.JFrame {
     /**
      * Creates new form ProfileInterface
      */
-    public ProfileInterface() {
+    public ProfileInterface(String filepath) throws PatientDatabase.DatabaseFileException {
+        database = new PatientDatabase(filepath);
         initComponents();
     }
 
@@ -959,8 +960,8 @@ public class ProfileInterface extends javax.swing.JFrame {
 
         String dateOfBirth = jTextField7.getText();
         try {
-            database.deleteProfile(lastName, dateOfBirth);
-            Patient thisPatient = database.findPatient(lastName, dateOfBirth);
+            Patient thisPatient = database.deleteProfile(lastName, dateOfBirth);
+            //Patient thisPatient = database.findPatient(lastName, dateOfBirth);
             String temp = thisPatient.toString();
             JOptionPane.showMessageDialog(this, "Deleted\n" + temp);
 
@@ -1190,7 +1191,11 @@ public class ProfileInterface extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ProfileInterface().setVisible(true);
+                try {
+                    new ProfileInterface(args[0]).setVisible(true);
+                } catch (PatientDatabase.DatabaseFileException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

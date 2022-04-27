@@ -121,14 +121,14 @@ public class PatientDatabase {
 
     // This should throw an exception if a Patient is not found
     // throws PatientNotFoundException
-    public void deleteProfile(String lastName, String dateOfBirth) throws PatientNotFoundException {
+    public Patient deleteProfile(String lastName, String dateOfBirth) throws PatientNotFoundException {
         // delete patient profile from database
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
             if(p.getLastName().equalsIgnoreCase(lastName) && p.getDateOfBirth().equalsIgnoreCase(dateOfBirth)) {
                 patientList.remove(i);
                 writeToFile();
-                return;
+                return p;
             }
         }
         // if the patient is not found, throw an exception

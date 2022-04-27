@@ -39,8 +39,8 @@ public class DatabaseRunner {
             System.out.println(recoverPatient.shortFormat());
 
             // update the patient
-            Patient updatedPatient = makeDemoPatient("8087073333");
-            database.updateProfile("McAndrew", "Quinn", updatedPatient);
+            //Patient updatedPatient = makeDemoPatient("8087073333");
+            //database.updateProfile("McAndrew", "Quinn", updatedPatient);
 
             // find the updated patient and print them again
             System.out.println(database.findPatient("McAndrew", "2002-06-13").shortFormat());
@@ -67,7 +67,7 @@ public class DatabaseRunner {
             PatientDatabase database = new PatientDatabase(args[0]);
             Patient p = database.findPatient("NoName", "NoDOB");
             database.deleteProfile("NoName", "NoDOB");
-            database.updateProfile("NoName", "NoDOB", makeDemoPatient("number"));
+            //database.updateProfile("NoName", "NoDOB", makeDemoPatient("number"));
         } catch (PatientDatabase.DatabaseFileException e) {
             e.printStackTrace();
         } catch (PatientDatabase.PatientNotFoundException e) {
