@@ -170,46 +170,57 @@ public class PatientDatabase {
 
     public void updateFirstName(String lastName, String dateOfBirth, String firstName) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).updateFirstName(firstName);
+        writeToFile();
     }
 
     public void updateLastName(String lastName, String dateOfBirth, String newLastName) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).updateLastName(newLastName);
+        writeToFile();
     }
 
     public void updateAddress(String lastName, String dateOfBirth, String address) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).updateAddress(address);
+        writeToFile();
     }
 
     public void updatePhoneNumber(String lastName, String dateOfBirth, String phoneNumber) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).updatePhoneNumber(phoneNumber);
+        writeToFile();
     }
 
     public void updateInsuranceType(String lastName, String dateOfBirth, Patient.InsuranceType insuranceType) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).updateInsuranceType(insuranceType);
+        writeToFile();
     }
 
     public void updateCopay(String lastName, String dateOfBirth, float copay) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).updateCopay(copay);
+        writeToFile();
     }
 
     public void updatePatientType(String lastName, String dateOfBirth, Patient.PatientType patientType) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).updatePatientType(patientType);
+        writeToFile();
     }
 
     public void updatePhysicianName(String lastName, String dateOfBirth, String physicianName) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).getMedicalConditions().updateName(physicianName);
+        writeToFile();
     }
 
     public void updatePhysicianNumber(String lastName, String dateOfBirth, String physicianNumber) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).getMedicalConditions().updatePhoneNumber(physicianNumber);
+        writeToFile();
     }
 
     public void updateAllergies(String lastName, String dateOfBirth, Patient.MedicalConditions.Allergies allergies) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).getMedicalConditions().updateAllergies(allergies);
+        writeToFile();
     }
 
     public void updateIllnesses(String lastName, String dateOfBirth, Patient.MedicalConditions.Illnesses illnesses) throws PatientNotFoundException {
         findPatient(lastName, dateOfBirth).getMedicalConditions().updateIllnesses(illnesses);
+        writeToFile();
     }
 
     /*

@@ -20,6 +20,7 @@ public class ProfileInterface extends javax.swing.JFrame {
      */
     public ProfileInterface(String filepath) throws PatientDatabase.DatabaseFileException {
         database = new PatientDatabase(filepath);
+        lastLoadedPatient = null;
         initComponents();
     }
 
@@ -989,24 +990,37 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         // TODO add your handling code here:
         // TODO: Restructure in order to construct the patient all at once rather than field by field
-        String firstName = jTextField1.getText();
-        String lastName = jTextField8.getText();
-        String address = jTextField9.getText();
-        String phoneNumber = jTextField10.getText();
-        String dateOfBirth = jTextField11.getText();
-        String insTypeString = jTextField12.getText();
+        String firstName = jTextField1.getText().trim();
+        String lastName = jTextField8.getText().trim();
+        String address = jTextField9.getText().trim();
+        String phoneNumber = jTextField10.getText().trim();
+        String dateOfBirth = jTextField11.getText().trim();
+        String insTypeString = jTextField12.getText().trim();
         Patient.InsuranceType insuranceType = Patient.parseInsuranceType(insTypeString);
-        float copay = Float.parseFloat(jTextField13.getText());
-        String patientTypeString = jTextField14.getText();
+        float copay;
+        try {
+            copay = Float.parseFloat(jTextField13.getText().trim());
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Copay invalid!");
+            return;
+        }
+        String patientTypeString = jTextField14.getText().trim();
         Patient.PatientType patientType = Patient.parsePatientType(patientTypeString);
-        String physician = jTextField15.getText();
-        String physicianPhone = jTextField16.getText();
-        String allergiesString = jTextField17.getText();
+        String physician = jTextField15.getText().trim();
+        String physicianPhone = jTextField16.getText().trim();
+        String allergiesString = jTextField17.getText().trim();
         Patient.MedicalConditions.Allergies allergies =
                 Patient.MedicalConditions.parseAllergies(allergiesString);
-        String illnessesString = jTextField18.getText();
+        String illnessesString = jTextField18.getText().trim();
         Patient.MedicalConditions.Illnesses illnesses =
                 Patient.MedicalConditions.parseIllnesses(illnessesString);
+
+        if(firstName.isBlank() || lastName.isBlank() || address.isBlank() ||
+                phoneNumber.isBlank() || dateOfBirth.isBlank() || physician.isBlank() ||
+                physicianPhone.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all of the fields!");
+            return;
+        }
         Patient newPatient = new Patient(lastName, firstName, address, phoneNumber, dateOfBirth,
                 copay, insuranceType, patientType,
                 new Patient.MedicalConditions(physician, physicianPhone, allergies, illnesses));
@@ -1030,19 +1044,33 @@ public class ProfileInterface extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, report);
     }
 
+    private void updateSuccess() {
+        JOptionPane.showMessageDialog(this, "Updated successfully!");
+    }
+
     private void UpdateFirstNameActionPerformed(java.awt.event.ActionEvent evt) {
-        String newFirstName = ChangeFirstNameText.getText();
+        String newFirstName = ChangeFirstNameText.getText().trim();
+        if (newFirstName.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cannot update with an empty field!");
+            return;
+        }
         try {
             database.updateFirstName(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newFirstName);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
 
     private void UpdateLastNameActionPerformed(java.awt.event.ActionEvent evt) {
-        String newLastName = ChangeLastNameText.getText();
+        String newLastName = ChangeLastNameText.getText().trim();
+        if (newLastName.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cannot update with an empty field!");
+            return;
+        }
         try {
             database.updateLastName(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newLastName);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -1050,9 +1078,14 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdateAddressActionPerformed(java.awt.event.ActionEvent evt) {
 
-        String newAddress = ChangeAddressText.getText();
+        String newAddress = ChangeAddressText.getText().trim();
+        if (newAddress.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cannot update with an empty field!");
+            return;
+        }
         try {
             database.updateAddress(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newAddress);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -1060,9 +1093,14 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdatePhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {
 
-        String newPhoneNumber = ChangePhoneNumberText.getText();
+        String newPhoneNumber = ChangePhoneNumberText.getText().trim();
+        if (newPhoneNumber.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cannot update with an empty field!");
+            return;
+        }
         try {
             database.updatePhoneNumber(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newPhoneNumber);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -1070,19 +1108,26 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdateInsuranceTypeActionPerformed(java.awt.event.ActionEvent evt) {
 
-        Patient.InsuranceType insuranceType = Patient.parseInsuranceType(ChangeInsuranceTypeText.getText());
+        Patient.InsuranceType insuranceType = Patient.parseInsuranceType(ChangeInsuranceTypeText.getText().trim());
         try {
             database.updateInsuranceType(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), insuranceType);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
 
     private void UpdateCoPayActionPerformed(java.awt.event.ActionEvent evt) {
-
-        float copay = Float.parseFloat(ChangeCoPayText.getText());
+        float copay = 0;
+        try {
+            copay = Float.parseFloat(ChangeCoPayText.getText().trim());
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid copay!");
+            return;
+        }
         try {
             database.updateCopay(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), copay);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -1090,9 +1135,10 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdatePatientTypeActionPerformed(java.awt.event.ActionEvent evt) {
 
-        Patient.PatientType patientType = Patient.parsePatientType(ChangePatientTypeText.getText());
+        Patient.PatientType patientType = Patient.parsePatientType(ChangePatientTypeText.getText().trim());
         try {
             database.updatePatientType(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), patientType);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -1100,9 +1146,14 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdatePhysicianNameActionPerformed(java.awt.event.ActionEvent evt) {
 
-        String newPhysicianName = ChangePhysicianNameText.getText();
+        String newPhysicianName = ChangePhysicianNameText.getText().trim();
+        if (newPhysicianName.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cannot update with an empty field!");
+            return;
+        }
         try {
             database.updatePhysicianName(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newPhysicianName);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -1110,8 +1161,13 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdatePhysicianPhoneActionPerformed(java.awt.event.ActionEvent evt) {
         String newPhysicianPhoneNumber = ChangePhysicianPhoneText.getText();
+        if (newPhysicianPhoneNumber.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Cannot update with an empty field!");
+            return;
+        }
         try {
             database.updatePhysicianNumber(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newPhysicianPhoneNumber);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -1120,9 +1176,10 @@ public class ProfileInterface extends javax.swing.JFrame {
     private void UpdateAllergiesActionPerformed(java.awt.event.ActionEvent evt) {
 
         Patient.MedicalConditions.Allergies allergies =
-                Patient.MedicalConditions.parseAllergies(ChangeAllergiesText.getText());
+                Patient.MedicalConditions.parseAllergies(ChangeAllergiesText.getText().trim());
         try {
             database.updateAllergies(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), allergies);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -1131,16 +1188,16 @@ public class ProfileInterface extends javax.swing.JFrame {
     private void UpdateChronicActionPerformed(java.awt.event.ActionEvent evt) {
 
         Patient.MedicalConditions.Illnesses illnesses =
-                Patient.MedicalConditions.parseIllnesses(ChangeChronicText.getText());
+                Patient.MedicalConditions.parseIllnesses(ChangeChronicText.getText().trim());
         try {
             database.updateIllnesses(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), illnesses);
+            updateSuccess();
         } catch (PatientDatabase.PatientNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
 
     private void SearchPhysicianPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
         String report = database.physicianReport(SearchPhysicianNameText.getText());
         JOptionPane.showMessageDialog(this, report);
     }
