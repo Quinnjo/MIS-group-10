@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class ProfileInterface extends javax.swing.JFrame {
 
     PatientDatabase database;
-   // Patient newPatient;
+    Patient newPatient;
 
     /**
      * Creates new form ProfileInterface
@@ -538,7 +538,14 @@ public class ProfileInterface extends javax.swing.JFrame {
 
         String dateOfBirth = jTextField3.getText();
 
-        database.findPatient(lastName, dateOfBirth);
+        try {
+            database.findPatient(lastName, dateOfBirth);
+        } catch (Exception PatientNotFoundException){
+            JOptionPane.showMessageDialog(this, "Patient not found!");
+
+        }
+
+      //  database.findPatient(lastName, dateOfBirth);
         // JOptionPane.showMessageDialog(this, "Patient name: " + jTextField6.getText().toString() + "\nPatient Date of Birth: " + jTextField3.getText());
     }
 
@@ -550,13 +557,18 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void DeletePatientProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void DeletePatientProfileButtonActionPerformed(java.awt.event.ActionEvent evt)  {
         // TODO add your handling code here:
         String lastName = jTextField2.getText();
 
         String dateOfBirth = jTextField7.getText();
+        try {
+            database.deleteProfile(lastName, dateOfBirth);
+        } catch (Exception PatientNotFoundException){
+            JOptionPane.showMessageDialog(this, "Patient not found!");
 
-        database.deletePatient(lastName, dateOfBirth);
+        }
+
     }
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -574,11 +586,15 @@ public class ProfileInterface extends javax.swing.JFrame {
     private void ConfirmPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         String firstName = jTextField1.getText();
-        //newPatient.firstName = firstName;
+        newPatient.firstName = firstName;
         String lastname = jTextField8.getText();
+        newPatient.lastName = lastname;
         String address = jTextField9.getText();
+        newPatient.address = address;
         String phoneNumber = jTextField10.getText();
+        newPatient.phoneNumber = phoneNumber;
         String dateOfBirth = jTextField11.getText();
+        newPatient.dateOfBirth = dateOfBirth;
         String insTypeString = jTextField12.getText();
      //   InsuranceType insType = InsuranceType.insTypeString;
         float copay = Float.parseFloat(jTextField13.getText());
@@ -587,6 +603,7 @@ public class ProfileInterface extends javax.swing.JFrame {
         String physicianPhone = jTextField16.getText();
       //  Allergies allergy = Allergies.jTextfield17.getText();
        // Illnesses illness = Illnesses.jTextField18.getText();
+        database.insertProfile(newPatient);
     }
 
     /**
