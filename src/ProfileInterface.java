@@ -1013,22 +1013,19 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
-
+        // TODO add your handling code here:
     }
 
     private void ChangeInsuranceTypeTextActionPerformed(java.awt.event.ActionEvent evt) {
-
-
+        // TODO add your handling code here:
     }
 
     private void SearchChronicTextActionPerformed(java.awt.event.ActionEvent evt) {
-
+        // TODO add your handling code here:
     }
 
     private void SearchPatientTypePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        String report = database.patientTypeReport(Patient.parsePatientType(ChangePatientTypeText.getText()));
-        JOptionPane.showMessageDialog(this, report);
     }
 
     private void UpdateFirstNameActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1050,6 +1047,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdateAddressActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
         String newAddress = ChangeAddressText.getText();
         try {
             database.updateAddress(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newAddress);
@@ -1059,6 +1057,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdatePhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
         String newPhoneNumber = ChangePhoneNumberText.getText();
         try {
             database.updatePhoneNumber(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newPhoneNumber);
@@ -1068,6 +1067,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdateInsuranceTypeActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
         Patient.InsuranceType insuranceType = Patient.parseInsuranceType(ChangeInsuranceTypeText.getText());
         try {
             database.updateInsuranceType(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), insuranceType);
@@ -1077,6 +1077,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdateCoPayActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
         float copay = Float.parseFloat(ChangeCoPayText.getText());
         try {
             database.updateCopay(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), copay);
@@ -1086,6 +1087,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdatePatientTypeActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
         Patient.PatientType patientType = Patient.parsePatientType(ChangePatientTypeText.getText());
         try {
             database.updatePatientType(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), patientType);
@@ -1095,6 +1097,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdatePhysicianNameActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
         String newPhysicianName = ChangePhysicianNameText.getText();
         try {
             database.updatePhysicianName(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newPhysicianName);
@@ -1113,6 +1116,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdateAllergiesActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
         Patient.MedicalConditions.Allergies allergies =
                 Patient.MedicalConditions.parseAllergies(ChangeAllergiesText.getText());
         try {
@@ -1123,6 +1127,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdateChronicActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
         Patient.MedicalConditions.Illnesses illnesses =
                 Patient.MedicalConditions.parseIllnesses(ChangeChronicText.getText());
         try {
@@ -1133,6 +1138,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void SearchPhysicianPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
         String report = database.physicianReport(SearchPhysicianNameText.getText());
         JOptionPane.showMessageDialog(this, report);
     }
@@ -1144,7 +1150,6 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void SearchInsurancePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-<<<<<<< Updated upstream
         // TODO add your handling code here:
         String report = database.insuranceTypeReport(Patient.parseInsuranceType(SearchInsuranceText.getText()));
         JOptionPane.showMessageDialog(this, report);
@@ -1153,15 +1158,6 @@ public class ProfileInterface extends javax.swing.JFrame {
     private void SearchChronicPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         String report = database.illnessesReport(Patient.MedicalConditions.parseIllnesses(SearchChronicText.getText()));
-=======
-        String report = database.insuranceTypeReport(
-                Patient.parseInsuranceType(SearchInsuranceText.getText()));
-    }
-
-    private void SearchChronicPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String report = database.illnessesReport(
-                Patient.MedicalConditions.parseIllnesses(SearchChronicText.getText()));
->>>>>>> Stashed changes
         JOptionPane.showMessageDialog(this, report);
     }
 
