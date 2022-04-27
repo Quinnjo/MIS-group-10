@@ -1029,21 +1029,41 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdateFirstNameActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         String newFirstName = ChangeFirstNameText.getText();
-        database.update
+        try {
+            database.updateFirstName(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newFirstName);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdateLastNameActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        String newLastName = ChangeLastNameText.getText();
+        try {
+            database.updateLastName(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newLastName);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdateAddressActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String newAddress = ChangeAddressText.getText();
+        try {
+            database.updateAddress(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newAddress);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdatePhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String newPhoneNumber = ChangePhoneNumberText.getText();
+        try {
+            database.updatePhoneNumber(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newPhoneNumber);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdateInsuranceTypeActionPerformed(java.awt.event.ActionEvent evt) {

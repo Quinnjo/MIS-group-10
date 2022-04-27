@@ -139,6 +139,7 @@ public class PatientDatabase {
     // But what type should that parameter be? Another patient class?
     // Remember: a patient's date of birth may not be modified!
 
+    /* UNUSED
     public void updateProfile(String lastName, String dateOfBirth, Patient newPatient) throws PatientNotFoundException {
         // TODO: make methods to update specific patient attributes?
         for(int i = 0; i < patientList.size(); i++) {
@@ -160,6 +161,72 @@ public class PatientDatabase {
         // should we raise an exception?
         throw new PatientNotFoundException("No patient was found with query: LastName=" + lastName + ", DOB=" + dateOfBirth);
     }
+    */
+
+    // Specifically, only the first name, last name, address, phone number,
+    // insurance type, copay, and patient type are eligible for modification.
+    // Additionally, the user should also be able to modify the name and phone
+    // number of the physician, allergies and chronic conditions
+
+    public void updateFirstName(String lastName, String dateOfBirth, String firstName) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).updateFirstName(firstName);
+    }
+
+    public void updateLastName(String lastName, String dateOfBirth, String newLastName) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).updateLastName(newLastName);
+    }
+
+    public void updateAddress(String lastName, String dateOfBirth, String address) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).updateAddress(address);
+    }
+
+    public void updatePhoneNumber(String lastName, String dateOfBirth, String phoneNumber) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).updatePhoneNumber(phoneNumber);
+    }
+
+    public void updateInsuranceType(String lastName, String dateOfBirth, Patient.InsuranceType insuranceType) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).updateInsuranceType(insuranceType);
+    }
+
+    public void updateCopay(String lastName, String dateOfBirth, float copay) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).updateCopay(copay);
+    }
+
+    public void updatePatientType(String lastName, String dateOfBirth, Patient.PatientType patientType) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).updatePatientType(patientType);
+    }
+
+    public void updatePhysicianName(String lastName, String dateOfBirth, String physicianName) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).getMedicalConditions().updateName(physicianName);
+    }
+
+    public void updatePhysicianNumber(String lastName, String dateOfBirth, String physicianNumber) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).getMedicalConditions().updatePhoneNumber(physicianNumber);
+    }
+
+    public void updateAllergies(String lastName, String dateOfBirth, Patient.MedicalConditions.Allergies allergies) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).getMedicalConditions().updateAllergies(allergies);
+    }
+
+    public void updateIllnesses(String lastName, String dateOfBirth, Patient.MedicalConditions.Illnesses illnesses) throws PatientNotFoundException {
+        findPatient(lastName, dateOfBirth).getMedicalConditions().updateIllnesses(illnesses);
+    }
+
+    /*
+    private Patient copyPatient(Patient p) {
+        String lastName = p.getLastName();
+        String firstName = p.getFirstName();
+        String address = p.getAddress();
+        String phoneNumber = p.getPhoneNumber();
+        String dateOfBirth = p.getDateOfBirth();
+        float copay = p.getCopay();
+        Patient.InsuranceType insuranceType = p.getInsuranceType();
+        Patient.PatientType patientType = p.getPatientType();
+        Patient.MedicalConditions medicalConditions = p.getMedicalConditions();
+        return null;
+    }
+    
+     */
 
     // throws PatientNotFoundException
     public Patient findPatient(String lastName, String dateOfBirth) throws PatientNotFoundException {
