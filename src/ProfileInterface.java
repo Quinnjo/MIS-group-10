@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 public class ProfileInterface extends javax.swing.JFrame {
 
     PatientDatabase database;
+    Patient lastLoadedPatient;
 
 
     /**
@@ -76,13 +77,63 @@ public class ProfileInterface extends javax.swing.JFrame {
         SearchPatientButton = new javax.swing.JButton();
         jInternalFrame4 = new javax.swing.JInternalFrame();
         jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        ChangeFirstNameText = new javax.swing.JTextField();
+        ChangeLastNameText = new javax.swing.JTextField();
+        ChangeAddressText = new javax.swing.JTextField();
+        ChangePhoneNumberText = new javax.swing.JTextField();
+        ChangeInsuranceTypeText = new javax.swing.JTextField();
+        ChangeCoPayText = new javax.swing.JTextField();
+        ChangePatientTypeText = new javax.swing.JTextField();
+        UpdateFirstName = new javax.swing.JButton();
+        UpdateLastName = new javax.swing.JButton();
+        UpdateAddress = new javax.swing.JButton();
+        UpdatePhoneNumber = new javax.swing.JButton();
+        UpdateInsuranceType = new javax.swing.JButton();
+        UpdateCoPay = new javax.swing.JButton();
+        UpdatePatientType = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        ChangePhysicianNameText = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        ChangePhysicianPhoneText = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        ChangeAllergiesText = new javax.swing.JTextField();
+        UpdatePhysicianName = new javax.swing.JButton();
+        UpdatePhysicianPhone = new javax.swing.JButton();
+        UpdateAllergies = new javax.swing.JButton();
+        jLabel37 = new javax.swing.JLabel();
+        ChangeChronicText = new javax.swing.JTextField();
+        UpdateChronic = new javax.swing.JButton();
         jInternalFrame5 = new javax.swing.JInternalFrame();
-        jTextField5 = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        SearchPhysicianNameText = new javax.swing.JTextField();
+        SearchPhysicianPatientsButton = new javax.swing.JButton();
+        jLabel39 = new javax.swing.JLabel();
+        SearchAllergyText = new javax.swing.JTextField();
+        SearchAllergyPatientsButton = new javax.swing.JButton();
+        jLabel40 = new javax.swing.JLabel();
+        SearchInsuranceText = new javax.swing.JTextField();
+        SearchInsurancePatientsButton = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        SearchChronicText = new javax.swing.JTextField();
+        SearchChronicPatientsButton = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        SearchPatientTypeText = new javax.swing.JTextField();
+        SearchPatientTypePatientsButton = new javax.swing.JToggleButton();
+        jLabel44 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
@@ -200,7 +251,7 @@ public class ProfileInterface extends javax.swing.JFrame {
                                                                         .addGroup(jInternalFrame1Layout.createSequentialGroup()
                                                                                 .addGap(117, 117, 117)
                                                                                 .addComponent(jLabel17)))
-                                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                                                .addGap(0, 319, Short.MAX_VALUE))))
                                         .addGroup(jInternalFrame1Layout.createSequentialGroup()
                                                 .addComponent(jLabel1)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -404,35 +455,233 @@ public class ProfileInterface extends javax.swing.JFrame {
 
         jLabel22.setText("Modify Patient");
 
+        jLabel23.setText("First Name");
+
+        jLabel25.setText("Last Name");
+
+        jLabel24.setText("Address");
+
+        jLabel26.setText("Phone Number");
+
+        jLabel27.setText("Insurance Type");
+
+        jLabel28.setText("Co-pay");
+
+        jLabel29.setText("Patient Type");
+
+        ChangeInsuranceTypeText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChangeInsuranceTypeTextActionPerformed(evt);
+            }
+        });
+
+        UpdateFirstName.setText("Update First Name");
+
+        UpdateLastName.setText("Update Last Name");
+
+        UpdateAddress.setText("Update Address");
+
+        UpdatePhoneNumber.setText("Update Phone Number");
+
+        UpdateInsuranceType.setText("Update Insurance Type");
+
+        UpdateCoPay.setText("Update Co-pay");
+
+        UpdatePatientType.setText("Update Patient Type");
+
+        jLabel34.setText("Physician Name");
+
+        jLabel35.setText("Physician Phone");
+
+        jLabel36.setText("Allergies");
+
+        UpdatePhysicianName.setText("Update Physician Name");
+
+        UpdatePhysicianPhone.setText("Update Physician Phone");
+
+        UpdateAllergies.setText("Update Allergies");
+
+        jLabel37.setText("Chronic");
+
+        UpdateChronic.setText("Update Chronic");
+
         javax.swing.GroupLayout jInternalFrame4Layout = new javax.swing.GroupLayout(jInternalFrame4.getContentPane());
         jInternalFrame4.getContentPane().setLayout(jInternalFrame4Layout);
         jInternalFrame4Layout.setHorizontalGroup(
                 jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jInternalFrame4Layout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(65, Short.MAX_VALUE))
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jInternalFrame4Layout.createSequentialGroup()
+                                                .addGap(47, 47, 47)
+                                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jInternalFrame4Layout.createSequentialGroup()
+                                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addGroup(jInternalFrame4Layout.createSequentialGroup()
+                                                                .addComponent(jLabel26)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(ChangePhoneNumberText))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jInternalFrame4Layout.createSequentialGroup()
+                                                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel23)
+                                                                        .addComponent(jLabel25)
+                                                                        .addComponent(jLabel24))
+                                                                .addGap(33, 33, 33)
+                                                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(ChangeFirstNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                                                                        .addComponent(ChangeLastNameText)
+                                                                        .addComponent(ChangeAddressText)))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jInternalFrame4Layout.createSequentialGroup()
+                                                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                        .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                        .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                .addGroup(jInternalFrame4Layout.createSequentialGroup()
+                                                                                                                        .addComponent(jLabel27)
+                                                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame4Layout.createSequentialGroup()
+                                                                                                                        .addComponent(jLabel28)
+                                                                                                                        .addGap(52, 52, 52)))
+                                                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame4Layout.createSequentialGroup()
+                                                                                                                .addComponent(jLabel29)
+                                                                                                                .addGap(22, 22, 22)))
+                                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame4Layout.createSequentialGroup()
+                                                                                                        .addComponent(jLabel34)
+                                                                                                        .addGap(1, 1, 1)))
+                                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame4Layout.createSequentialGroup()
+                                                                                                .addComponent(jLabel35)
+                                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame4Layout.createSequentialGroup()
+                                                                                        .addComponent(jLabel36)
+                                                                                        .addGap(53, 53, 53)))
+                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame4Layout.createSequentialGroup()
+                                                                                .addComponent(jLabel37)
+                                                                                .addGap(58, 58, 58)))
+                                                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(ChangeInsuranceTypeText)
+                                                                        .addComponent(ChangeCoPayText)
+                                                                        .addComponent(ChangePatientTypeText)
+                                                                        .addComponent(ChangePhysicianNameText)
+                                                                        .addComponent(ChangePhysicianPhoneText, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                                                        .addComponent(ChangeAllergiesText)
+                                                                        .addComponent(ChangeChronicText))))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(UpdateFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(UpdateLastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(UpdateAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(UpdatePhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(UpdateInsuranceType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(UpdateCoPay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(UpdatePatientType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(UpdatePhysicianName)
+                                                        .addComponent(UpdatePhysicianPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(UpdateAllergies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(UpdateChronic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addContainerGap(89, Short.MAX_VALUE))
         );
         jInternalFrame4Layout.setVerticalGroup(
                 jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jInternalFrame4Layout.createSequentialGroup()
                                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel23)
+                                        .addComponent(ChangeFirstNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdateFirstName))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel25)
+                                        .addComponent(ChangeLastNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdateLastName))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel24)
+                                        .addComponent(ChangeAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdateAddress))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel26)
+                                        .addComponent(ChangePhoneNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdatePhoneNumber))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel27)
+                                        .addComponent(ChangeInsuranceTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdateInsuranceType))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel28)
+                                        .addComponent(ChangeCoPayText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdateCoPay))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel29)
+                                        .addComponent(ChangePatientTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdatePatientType))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel34)
+                                        .addComponent(ChangePhysicianNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdatePhysicianName))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel35)
+                                        .addComponent(ChangePhysicianPhoneText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdatePhysicianPhone))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel36)
+                                        .addComponent(ChangeAllergiesText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdateAllergies))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel37)
+                                        .addComponent(ChangeChronicText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UpdateChronic))
+                                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jInternalFrame5.setVisible(true);
 
-        jTextField5.setText("Search Database");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jLabel38.setText("Physician Name");
+
+        SearchPhysicianPatientsButton.setText("Search Patients");
+
+        jLabel39.setText("Allergy");
+
+        SearchAllergyPatientsButton.setText("Search Patients");
+
+        jLabel40.setText("Insurance");
+
+        SearchInsurancePatientsButton.setText("Search Patients");
+
+        jLabel41.setText("Chronic");
+
+        SearchChronicText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                SearchChronicTextActionPerformed(evt);
             }
         });
+
+        SearchChronicPatientsButton.setText("Search Patients");
+
+        jLabel43.setText("Patient Type");
+
+        SearchPatientTypePatientsButton.setText("Search Patients");
+        SearchPatientTypePatientsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchPatientTypePatientsButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel44.setText("Search Database");
 
         jMenu2.setText("File");
 
         jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+        jCheckBoxMenuItem1.setText("Physician");
         jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxMenuItem1ActionPerformed(evt);
@@ -441,12 +690,21 @@ public class ProfileInterface extends javax.swing.JFrame {
         jMenu2.add(jCheckBoxMenuItem1);
 
         jCheckBoxMenuItem2.setSelected(true);
-        jCheckBoxMenuItem2.setText("jCheckBoxMenuItem2");
+        jCheckBoxMenuItem2.setText("Allergies");
+        jCheckBoxMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jCheckBoxMenuItem2);
 
         jCheckBoxMenuItem3.setSelected(true);
         jCheckBoxMenuItem3.setText("jCheckBoxMenuItem3");
         jMenu2.add(jCheckBoxMenuItem3);
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+        jMenu2.add(jRadioButtonMenuItem1);
 
         jCheckBoxMenuItem4.setSelected(true);
         jCheckBoxMenuItem4.setText("jCheckBoxMenuItem4");
@@ -463,16 +721,75 @@ public class ProfileInterface extends javax.swing.JFrame {
         jInternalFrame5.getContentPane().setLayout(jInternalFrame5Layout);
         jInternalFrame5Layout.setHorizontalGroup(
                 jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame5Layout.createSequentialGroup()
-                                .addContainerGap(105, Short.MAX_VALUE)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jInternalFrame5Layout.createSequentialGroup()
+                                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel38)
+                                        .addComponent(jLabel39)
+                                        .addComponent(jLabel40)
+                                        .addComponent(jLabel41)
+                                        .addComponent(jLabel42)
+                                        .addComponent(jLabel43))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(SearchPhysicianNameText)
+                                        .addComponent(SearchAllergyText)
+                                        .addComponent(SearchInsuranceText)
+                                        .addComponent(SearchChronicText)
+                                        .addComponent(SearchPatientTypeText, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(SearchPhysicianPatientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(SearchAllergyPatientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(SearchInsurancePatientsButton)
+                                        .addGroup(jInternalFrame5Layout.createSequentialGroup()
+                                                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(SearchChronicPatientsButton)
+                                                        .addComponent(SearchPatientTypePatientsButton))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())
+                        .addGroup(jInternalFrame5Layout.createSequentialGroup()
+                                .addGap(137, 137, 137)
+                                .addComponent(jLabel44)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrame5Layout.setVerticalGroup(
                 jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jInternalFrame5Layout.createSequentialGroup()
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addContainerGap()
+                                .addComponent(jLabel44)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(SearchInsuranceText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(SearchInsurancePatientsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jInternalFrame5Layout.createSequentialGroup()
+                                                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel38)
+                                                        .addComponent(SearchPhysicianNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(SearchPhysicianPatientsButton))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel39)
+                                                        .addComponent(SearchAllergyText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(SearchAllergyPatientsButton))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel40)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel41)
+                                        .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(SearchChronicText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(SearchChronicPatientsButton)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jInternalFrame5Layout.createSequentialGroup()
+                                                .addComponent(jLabel42)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel43))
+                                        .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(SearchPatientTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(SearchPatientTypePatientsButton)))
+                                .addGap(0, 712, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -486,12 +803,13 @@ public class ProfileInterface extends javax.swing.JFrame {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                         .addComponent(jInternalFrame3)
                                                         .addComponent(jInternalFrame2))
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jInternalFrame4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jInternalFrame4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
                                         .addComponent(jInternalFrame1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jInternalFrame5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(101, 101, 101))
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -506,9 +824,8 @@ public class ProfileInterface extends javax.swing.JFrame {
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(0, 19, Short.MAX_VALUE))
-                                                        .addComponent(jInternalFrame4))))
+                                                                .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(jInternalFrame4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addContainerGap())
         );
 
@@ -523,16 +840,10 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    // USE CASE
-    // FIND AND DISPLAY PATIENT
     private void SearchPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         // THIS IS THE CODE TO ADD FOR SEARCHING FOR PATIENT IN DATABASE FILE
@@ -548,9 +859,6 @@ public class ProfileInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Patient not found!");
 
         }
-
-      //  database.findPatient(lastName, dateOfBirth);
-        // JOptionPane.showMessageDialog(this, "Patient name: " + jTextField6.getText().toString() + "\nPatient Date of Birth: " + jTextField3.getText());
     }
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -561,11 +869,7 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    // USE CASE
-    // DELETE PATIENT FROM DATABASE
-    // This option searches for a specific patient when supplied with a last name
-    // and date of birth. The entire profile of the patient is displayed.
-    private void DeletePatientProfileButtonActionPerformed(java.awt.event.ActionEvent evt)  {
+    private void DeletePatientProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         String lastName = jTextField2.getText();
 
@@ -580,7 +884,6 @@ public class ProfileInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Patient not found!");
 
         }
-
     }
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -595,9 +898,9 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    // USE CASE
-    // INSERT PATIENT INTO DATABASE FROM USER FIELDS
     private void ConfirmPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        // TODO add your handling code here:
         // TODO add your handling code here:
         // TODO: Restructure in order to construct the patient all at once rather than field by field
         String firstName = jTextField1.getText();
@@ -622,6 +925,22 @@ public class ProfileInterface extends javax.swing.JFrame {
                 copay, insuranceType, patientType,
                 new Patient.MedicalConditions(physician, physicianPhone, allergies, illnesses));
         database.insertProfile(newPatient);
+    }
+
+    private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void ChangeInsuranceTypeTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void SearchChronicTextActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void SearchPatientTypePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
     }
 
     /**
@@ -660,9 +979,41 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
+    private javax.swing.JTextField ChangeAddressText;
+    private javax.swing.JTextField ChangeAllergiesText;
+    private javax.swing.JTextField ChangeChronicText;
+    private javax.swing.JTextField ChangeCoPayText;
+    private javax.swing.JTextField ChangeFirstNameText;
+    private javax.swing.JTextField ChangeInsuranceTypeText;
+    private javax.swing.JTextField ChangeLastNameText;
+    private javax.swing.JTextField ChangePatientTypeText;
+    private javax.swing.JTextField ChangePhoneNumberText;
+    private javax.swing.JTextField ChangePhysicianNameText;
+    private javax.swing.JTextField ChangePhysicianPhoneText;
     private javax.swing.JButton ConfirmPatientButton;
     private javax.swing.JButton DeletePatientProfileButton;
+    private javax.swing.JButton SearchAllergyPatientsButton;
+    private javax.swing.JTextField SearchAllergyText;
+    private javax.swing.JButton SearchChronicPatientsButton;
+    private javax.swing.JTextField SearchChronicText;
+    private javax.swing.JTextField SearchInsurancePatientsButton;
+    private javax.swing.JTextField SearchInsuranceText;
     private javax.swing.JButton SearchPatientButton;
+    private javax.swing.JToggleButton SearchPatientTypePatientsButton;
+    private javax.swing.JTextField SearchPatientTypeText;
+    private javax.swing.JTextField SearchPhysicianNameText;
+    private javax.swing.JButton SearchPhysicianPatientsButton;
+    private javax.swing.JButton UpdateAddress;
+    private javax.swing.JButton UpdateAllergies;
+    private javax.swing.JButton UpdateChronic;
+    private javax.swing.JButton UpdateCoPay;
+    private javax.swing.JButton UpdateFirstName;
+    private javax.swing.JButton UpdateInsuranceType;
+    private javax.swing.JButton UpdateLastName;
+    private javax.swing.JButton UpdatePatientType;
+    private javax.swing.JButton UpdatePhoneNumber;
+    private javax.swing.JButton UpdatePhysicianName;
+    private javax.swing.JButton UpdatePhysicianPhone;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
@@ -687,8 +1038,26 @@ public class ProfileInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -698,6 +1067,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -710,7 +1080,6 @@ public class ProfileInterface extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
