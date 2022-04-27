@@ -531,6 +531,8 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
+    // USE CASE
+    // FIND AND DISPLAY PATIENT
     private void SearchPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         // THIS IS THE CODE TO ADD FOR SEARCHING FOR PATIENT IN DATABASE FILE
@@ -559,6 +561,8 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
+    // USE CASE
+    // DELETE PATIENT FROM DATABASE
     private void DeletePatientProfileButtonActionPerformed(java.awt.event.ActionEvent evt)  {
         // TODO add your handling code here:
         String lastName = jTextField2.getText();
@@ -589,6 +593,8 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
+    // USE CASE
+    // INSERT PATIENT INTO DATABASE FROM USER FIELDS
     private void ConfirmPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         // TODO: Restructure in order to construct the patient all at once rather than field by field
