@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-
+package com.mycompany.patientprofileinterface;
 import javax.swing.JOptionPane;
 /**
  *
@@ -476,18 +476,53 @@ public class ProfileInterface extends javax.swing.JFrame {
         });
 
         UpdateFirstName.setText("Update First Name");
+        UpdateFirstName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateFirstNameActionPerformed(evt);
+            }
+        });
 
         UpdateLastName.setText("Update Last Name");
+        UpdateLastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateLastNameActionPerformed(evt);
+            }
+        });
 
         UpdateAddress.setText("Update Address");
+        UpdateAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateAddressActionPerformed(evt);
+            }
+        });
 
         UpdatePhoneNumber.setText("Update Phone Number");
+        UpdatePhoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatePhoneNumberActionPerformed(evt);
+            }
+        });
 
         UpdateInsuranceType.setText("Update Insurance Type");
+        UpdateInsuranceType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateInsuranceTypeActionPerformed(evt);
+            }
+        });
 
         UpdateCoPay.setText("Update Co-pay");
+        UpdateCoPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateCoPayActionPerformed(evt);
+            }
+        });
 
         UpdatePatientType.setText("Update Patient Type");
+        UpdatePatientType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatePatientTypeActionPerformed(evt);
+            }
+        });
 
         jLabel34.setText("Physician Name");
 
@@ -496,14 +531,34 @@ public class ProfileInterface extends javax.swing.JFrame {
         jLabel36.setText("Allergies");
 
         UpdatePhysicianName.setText("Update Physician Name");
+        UpdatePhysicianName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatePhysicianNameActionPerformed(evt);
+            }
+        });
 
         UpdatePhysicianPhone.setText("Update Physician Phone");
+        UpdatePhysicianPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatePhysicianPhoneActionPerformed(evt);
+            }
+        });
 
         UpdateAllergies.setText("Update Allergies");
+        UpdateAllergies.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateAllergiesActionPerformed(evt);
+            }
+        });
 
         jLabel37.setText("Chronic");
 
         UpdateChronic.setText("Update Chronic");
+        UpdateChronic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateChronicActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame4Layout = new javax.swing.GroupLayout(jInternalFrame4.getContentPane());
         jInternalFrame4.getContentPane().setLayout(jInternalFrame4Layout);
@@ -619,7 +674,7 @@ public class ProfileInterface extends javax.swing.JFrame {
                                 .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel29)
                                         .addComponent(ChangePatientTypeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(UpdatePatientType))
+                                        .addComponent(UpdatePatientType, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel34)
@@ -648,14 +703,29 @@ public class ProfileInterface extends javax.swing.JFrame {
         jLabel38.setText("Physician Name");
 
         SearchPhysicianPatientsButton.setText("Search Patients");
+        SearchPhysicianPatientsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchPhysicianPatientsButtonActionPerformed(evt);
+            }
+        });
 
         jLabel39.setText("Allergy");
 
         SearchAllergyPatientsButton.setText("Search Patients");
+        SearchAllergyPatientsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchAllergyPatientsButtonActionPerformed(evt);
+            }
+        });
 
         jLabel40.setText("Insurance");
 
         SearchInsurancePatientsButton.setText("Search Patients");
+        SearchInsurancePatientsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchInsurancePatientsButtonActionPerformed(evt);
+            }
+        });
 
         jLabel41.setText("Chronic");
 
@@ -666,6 +736,11 @@ public class ProfileInterface extends javax.swing.JFrame {
         });
 
         SearchChronicPatientsButton.setText("Search Patients");
+        SearchChronicPatientsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchChronicPatientsButtonActionPerformed(evt);
+            }
+        });
 
         jLabel43.setText("Patient Type");
 
@@ -854,7 +929,7 @@ public class ProfileInterface extends javax.swing.JFrame {
         try {
             Patient thisPatient = database.findPatient(lastName, dateOfBirth);
             String temp = thisPatient.toString();
-            JOptionPane.showMessageDialog(this, "Found\n" + temp);
+            JOptionPane.showMessageDialong(this, "Found\n" + temp);
         } catch (Exception PatientNotFoundException){
             JOptionPane.showMessageDialog(this, "Patient not found!");
 
@@ -876,7 +951,7 @@ public class ProfileInterface extends javax.swing.JFrame {
         String dateOfBirth = jTextField7.getText();
         try {
             database.deleteProfile(lastName, dateOfBirth);
-            Patient thisPatient = database.findPatient(lastName, dateOfBirth);
+            Patient thisPatient = database.findPatient(lastname, dateOfBirth);
             String temp = thisPatient.toString();
             JOptionPane.showMessageDialog(this, "Deleted\n" + temp);
 
@@ -940,6 +1015,66 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void SearchPatientTypePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdateFirstNameActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdateLastNameActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdateAddressActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdatePhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdateInsuranceTypeActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdateCoPayActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdatePatientTypeActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdatePhysicianNameActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdatePhysicianPhoneActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdateAllergiesActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void UpdateChronicActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void SearchPhysicianPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void SearchAllergyPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void SearchInsurancePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void SearchChronicPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
