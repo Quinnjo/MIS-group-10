@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class ProfileInterface extends javax.swing.JFrame {
 
     PatientDatabase database;
-    Patient newPatient;
+
 
     /**
      * Creates new form ProfileInterface
@@ -539,7 +539,9 @@ public class ProfileInterface extends javax.swing.JFrame {
         String dateOfBirth = jTextField3.getText();
 
         try {
-            database.findPatient(lastName, dateOfBirth);
+            Patient thisPatient = database.findPatient(lastName, dateOfBirth);
+            String temp = thisPatient.toString();
+            JOptionPane.showMessageDialong(this, "Found\n" + temp);
         } catch (Exception PatientNotFoundException){
             JOptionPane.showMessageDialog(this, "Patient not found!");
 
@@ -564,6 +566,10 @@ public class ProfileInterface extends javax.swing.JFrame {
         String dateOfBirth = jTextField7.getText();
         try {
             database.deleteProfile(lastName, dateOfBirth);
+            Patient thisPatient = database.findPatient(lastname, dateOfBirth);
+            String temp = thisPatient.toString();
+            JOptionPane.showMessageDialog(this, "Deleted\n" + temp);
+
         } catch (Exception PatientNotFoundException){
             JOptionPane.showMessageDialog(this, "Patient not found!");
 
@@ -585,6 +591,7 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void ConfirmPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        Patient newPatient;
         String firstName = jTextField1.getText();
         newPatient.firstName = firstName;
         String lastname = jTextField8.getText();
