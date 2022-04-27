@@ -1145,18 +1145,19 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void SearchAllergyPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String report = database.allergiesReport(Patient.MedicalConditions.parseAllergies(SearchAllergyText.getText()));
+        JOptionPane.showMessageDialog(this, report);
     }
 
     private void SearchInsurancePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        String report = database.insuranceTypeReport(
-                Patient.parseInsuranceType(SearchInsuranceText.getText()));
+        String report = database.insuranceTypeReport(Patient.parseInsuranceType(SearchInsuranceText.getText()));
+        JOptionPane.showMessageDialog(this, report);
     }
 
     private void SearchChronicPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        String report = database.illnessesReport(
-                Patient.MedicalConditions.parseIllnesses(SearchChronicText.getText()));
+        String report = database.illnessesReport(Patient.MedicalConditions.parseIllnesses(SearchChronicText.getText()));
         JOptionPane.showMessageDialog(this, report);
     }
 
