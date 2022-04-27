@@ -120,7 +120,7 @@ public class ProfileInterface extends javax.swing.JFrame {
         SearchAllergyPatientsButton = new javax.swing.JButton();
         jLabel40 = new javax.swing.JLabel();
         SearchInsuranceText = new javax.swing.JTextField();
-        SearchInsurancePatientsButton = new javax.swing.JTextField();
+        SearchInsurancePatientsButton = new javax.swing.JButton();
         jLabel41 = new javax.swing.JLabel();
         SearchChronicText = new javax.swing.JTextField();
         SearchChronicPatientsButton = new javax.swing.JButton();
@@ -1218,7 +1218,7 @@ public class ProfileInterface extends javax.swing.JFrame {
     private javax.swing.JTextField SearchAllergyText;
     private javax.swing.JButton SearchChronicPatientsButton;
     private javax.swing.JTextField SearchChronicText;
-    private javax.swing.JTextField SearchInsurancePatientsButton;
+    private javax.swing.JButton SearchInsurancePatientsButton;
     private javax.swing.JTextField SearchInsuranceText;
     private javax.swing.JButton SearchPatientButton;
     private javax.swing.JToggleButton SearchPatientTypePatientsButton;
