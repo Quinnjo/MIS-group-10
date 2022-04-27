@@ -1011,6 +1011,8 @@ public class ProfileInterface extends javax.swing.JFrame {
                 copay, insuranceType, patientType,
                 new Patient.MedicalConditions(physician, physicianPhone, allergies, illnesses));
         database.insertProfile(newPatient);
+        String temp = newPatient.toString();
+        JOptionPane.showMessageDialog(this, "Created:\n" + temp);
     }
 
     private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
