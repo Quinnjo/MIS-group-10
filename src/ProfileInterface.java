@@ -919,6 +919,8 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
+    // USE CASE
+    // FIND AND DISPLAY PATIENT
     private void SearchPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         // THIS IS THE CODE TO ADD FOR SEARCHING FOR PATIENT IN DATABASE FILE
@@ -930,10 +932,13 @@ public class ProfileInterface extends javax.swing.JFrame {
             Patient thisPatient = database.findPatient(lastName, dateOfBirth);
             String temp = thisPatient.toString();
             JOptionPane.showMessageDialog(this, "Found\n" + temp);
-        } catch (Exception PatientNotFoundException){
-            JOptionPane.showMessageDialog(this, "Patient not found!");
-
+            lastLoadedPatient = thisPatient;
+        } catch (PatientDatabase.PatientNotFoundException e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
+
+        //  database.findPatient(lastName, dateOfBirth);
+        // JOptionPane.showMessageDialog(this, "Patient name: " + jTextField6.getText().toString() + "\nPatient Date of Birth: " + jTextField3.getText());
     }
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -944,7 +949,11 @@ public class ProfileInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void DeletePatientProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    // USE CASE
+    // DELETE PATIENT FROM DATABASE
+    // This option searches for a specific patient when supplied with a last name
+    // and date of birth. The entire profile of the patient is displayed.
+    private void DeletePatientProfileButtonActionPerformed(java.awt.event.ActionEvent evt)  {
         // TODO add your handling code here:
         String lastName = jTextField2.getText();
 
@@ -955,10 +964,11 @@ public class ProfileInterface extends javax.swing.JFrame {
             String temp = thisPatient.toString();
             JOptionPane.showMessageDialog(this, "Deleted\n" + temp);
 
-        } catch (Exception PatientNotFoundException){
-            JOptionPane.showMessageDialog(this, "Patient not found!");
+        } catch (PatientDatabase.PatientNotFoundException e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
 
         }
+
     }
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1020,6 +1030,8 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdateFirstNameActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String newFirstName = ChangeFirstNameText.getText();
+        database.update
     }
 
     private void UpdateLastNameActionPerformed(java.awt.event.ActionEvent evt) {
