@@ -1068,14 +1068,32 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdateInsuranceTypeActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        Patient.InsuranceType insuranceType = Patient.parseInsuranceType(ChangeInsuranceTypeText.getText());
+        try {
+            database.updateInsuranceType(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), insuranceType);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdateCoPayActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        float copay = Float.parseFloat(ChangeCoPayText.getText());
+        try {
+            database.updateCopay(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), copay);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdatePatientTypeActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        Patient.PatientType patientType = Patient.parsePatientType(ChangePatientTypeText.getText());
+        try {
+            database.updatePatientType(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), patientType);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdatePhysicianNameActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1099,10 +1117,24 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdateAllergiesActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        Patient.MedicalConditions.Allergies allergies =
+                Patient.MedicalConditions.parseAllergies(ChangeAllergiesText.getText());
+        try {
+            database.updateAllergies(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), allergies);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdateChronicActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        Patient.MedicalConditions.Illnesses illnesses =
+                Patient.MedicalConditions.parseIllnesses(ChangeChronicText.getText());
+        try {
+            database.updateIllnesses(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), illnesses);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void SearchPhysicianPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
