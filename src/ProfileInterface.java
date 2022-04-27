@@ -563,6 +563,8 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     // USE CASE
     // DELETE PATIENT FROM DATABASE
+    // This option searches for a specific patient when supplied with a last name
+    // and date of birth. The entire profile of the patient is displayed.
     private void DeletePatientProfileButtonActionPerformed(java.awt.event.ActionEvent evt)  {
         // TODO add your handling code here:
         String lastName = jTextField2.getText();
@@ -570,7 +572,7 @@ public class ProfileInterface extends javax.swing.JFrame {
         String dateOfBirth = jTextField7.getText();
         try {
             database.deleteProfile(lastName, dateOfBirth);
-            Patient thisPatient = database.findPatient(lastname, dateOfBirth);
+            Patient thisPatient = database.findPatient(lastName, dateOfBirth);
             String temp = thisPatient.toString();
             JOptionPane.showMessageDialog(this, "Deleted\n" + temp);
 
@@ -598,25 +600,27 @@ public class ProfileInterface extends javax.swing.JFrame {
     private void ConfirmPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         // TODO: Restructure in order to construct the patient all at once rather than field by field
-        Patient newPatient;
         String firstName = jTextField1.getText();
-        newPatient.firstName = firstName;
-        String lastname = jTextField8.getText();
-        newPatient.lastName = lastname;
+        String lastName = jTextField8.getText();
         String address = jTextField9.getText();
-        newPatient.address = address;
         String phoneNumber = jTextField10.getText();
-        newPatient.phoneNumber = phoneNumber;
         String dateOfBirth = jTextField11.getText();
-        newPatient.dateOfBirth = dateOfBirth;
         String insTypeString = jTextField12.getText();
-     //   InsuranceType insType = InsuranceType.insTypeString;
+        Patient.InsuranceType insuranceType = Patient.parseInsuranceType(insTypeString);
         float copay = Float.parseFloat(jTextField13.getText());
-      //  PatientType insType = PatientType.jTextfield14.getText();
+        String patientTypeString = jTextField14.getText();
+        Patient.PatientType patientType = Patient.parsePatientType(patientTypeString);
         String physician = jTextField15.getText();
         String physicianPhone = jTextField16.getText();
-      //  Allergies allergy = Allergies.jTextfield17.getText();
-       // Illnesses illness = Illnesses.jTextField18.getText();
+        String allergiesString = jTextField17.getText();
+        Patient.MedicalConditions.Allergies allergies =
+                Patient.MedicalConditions.parseAllergies(allergiesString);
+        String illnessesString = jTextField18.getText();
+        Patient.MedicalConditions.Illnesses illnesses =
+                Patient.MedicalConditions.parseIllnesses(illnessesString);
+        Patient newPatient = new Patient(lastName, firstName, address, phoneNumber, dateOfBirth,
+                copay, insuranceType, patientType,
+                new Patient.MedicalConditions(physician, physicianPhone, allergies, illnesses));
         database.insertProfile(newPatient);
     }
 
