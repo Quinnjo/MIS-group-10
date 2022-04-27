@@ -591,6 +591,7 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void ConfirmPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        // TODO: Restructure in order to construct the patient all at once rather than field by field
         Patient newPatient;
         String firstName = jTextField1.getText();
         newPatient.firstName = firstName;
