@@ -1139,6 +1139,8 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void SearchPhysicianPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String report = database.physicianReport(SearchPhysicianNameText.getText());
+        JOptionPane.showMessageDialog(this, report);
     }
 
     private void SearchAllergyPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1147,10 +1149,15 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void SearchInsurancePatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String report = database.insuranceTypeReport(
+                Patient.parseInsuranceType(SearchInsuranceText.getText()));
     }
 
     private void SearchChronicPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String report = database.illnessesReport(
+                Patient.MedicalConditions.parseIllnesses(SearchChronicText.getText()));
+        JOptionPane.showMessageDialog(this, report);
     }
 
     /**
