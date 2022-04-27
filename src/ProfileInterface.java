@@ -543,7 +543,7 @@ public class ProfileInterface extends javax.swing.JFrame {
         try {
             Patient thisPatient = database.findPatient(lastName, dateOfBirth);
             String temp = thisPatient.toString();
-            JOptionPane.showMessageDialong(this, "Found\n" + temp);
+            JOptionPane.showMessageDialog(this, "Found\n" + temp);
         } catch (Exception PatientNotFoundException){
             JOptionPane.showMessageDialog(this, "Patient not found!");
 
