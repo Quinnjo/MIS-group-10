@@ -1080,6 +1080,12 @@ public class ProfileInterface extends javax.swing.JFrame {
 
     private void UpdatePhysicianNameActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String newPhysicianName = ChangePhysicianNameText.getText();
+        try {
+            database.updatePhysicianName(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newPhysicianName);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdatePhysicianPhoneActionPerformed(java.awt.event.ActionEvent evt) {
