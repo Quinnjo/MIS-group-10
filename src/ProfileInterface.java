@@ -1083,7 +1083,12 @@ public class ProfileInterface extends javax.swing.JFrame {
     }
 
     private void UpdatePhysicianPhoneActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        String newPhysicianPhoneNumber = ChangePhysicianPhoneText.getText();
+        try {
+            database.updatePhysicianNumber(lastLoadedPatient.getLastName(), lastLoadedPatient.getDateOfBirth(), newPhysicianPhoneNumber);
+        } catch (PatientDatabase.PatientNotFoundException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     private void UpdateAllergiesActionPerformed(java.awt.event.ActionEvent evt) {
