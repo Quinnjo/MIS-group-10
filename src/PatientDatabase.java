@@ -6,25 +6,21 @@ import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
 import java.lang.Exception;
-//import java.io.*;
 
 public class PatientDatabase {
-    //final int MAX_PATIENT_NUMBER = 100;
 
     private ArrayList<Patient> patientList;
     private int numPatients;
     private String filePath;
 
-    public PatientDatabase(String filePath) {
+    // Constructor
+    // takes a filePath that will serve as the file representation for the database
+    public PatientDatabase(String filePath) throws DatabaseFileException {
         this.filePath = filePath;
         patientList = new ArrayList<Patient>(); // make
 
         // open and process the file
-        try {
-            readFromFile();
-        } catch(DatabaseFileException e) {
-            e.printStackTrace();
-        }
+        readFromFile();
     }
 
     /*
@@ -45,7 +41,7 @@ public class PatientDatabase {
         } catch(FileNotFoundException e) {
             throw new DatabaseFileException("File at path: '" + filePath + "' could not be opened!");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new DatabaseFileException("Something went wrong when loading the file...");
         }
     }
 
@@ -74,13 +70,15 @@ public class PatientDatabase {
         return patient;
     }
 
-    private void writeToFile() {
+    // Saves the present state of the database to the file at filePath
+    public void writeToFile() {
         File file = new File(filePath);
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             for(Patient p : patientList) {
                 writePatient(p, bw);
             }
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -94,11 +92,13 @@ public class PatientDatabase {
         bw.newLine();
         bw.write(p.getAddress());
         bw.newLine();
+        bw.write(p.getPhoneNumber());
+        bw.newLine();
         bw.write(p.getDateOfBirth());
         bw.newLine();
-        bw.write(String.valueOf(p.getCopay()));
-        bw.newLine();
         bw.write(p.getInsuranceType().name());
+        bw.newLine();
+        bw.write(String.valueOf(p.getCopay()));
         bw.newLine();
         bw.write(p.getPatientType().name());
         bw.newLine();
@@ -110,11 +110,13 @@ public class PatientDatabase {
         bw.newLine();
         bw.write(p.getMedicalConditions().getIllnesses().name());
         bw.newLine();
+        bw.flush();
     }
 
     public void insertProfile(Patient patient) {
         // insert patient into database
         patientList.add(patient);
+        writeToFile();
     }
 
     // This should throw an exception if a Patient is not found
@@ -125,6 +127,7 @@ public class PatientDatabase {
             Patient p = patientList.get(i);
             if(p.getLastName().equalsIgnoreCase(lastName) && p.getDateOfBirth().equalsIgnoreCase(dateOfBirth)) {
                 patientList.remove(i);
+                writeToFile();
                 return;
             }
         }
@@ -136,24 +139,26 @@ public class PatientDatabase {
     // But what type should that parameter be? Another patient class?
     // Remember: a patient's date of birth may not be modified!
 
-    public void updateProfile(String lastName, String dateOfBirth, Patient newPatient) {
-        // TODO: update patient profile
+    public void updateProfile(String lastName, String dateOfBirth, Patient newPatient) throws PatientNotFoundException {
         // TODO: make methods to update specific patient attributes?
         for(int i = 0; i < patientList.size(); i++) {
             Patient p = patientList.get(i);
             if(p.getLastName().equalsIgnoreCase(lastName) && p.getDateOfBirth().equalsIgnoreCase(dateOfBirth)) {
                 if(dateOfBirth.equalsIgnoreCase(newPatient.getDateOfBirth())) {
                     patientList.set(i, newPatient);
+                    writeToFile();
                     return;
                 } else {
                     // you can't update a patient's date of birth!
                     // we shouldn't modify the patient
                     // should we raise an exception?
+                    throw new PatientNotFoundException("You may not update a patient's date of birth!");
                 }
             }
         }
         // if we reach here, no patient was found
         // should we raise an exception?
+        throw new PatientNotFoundException("No patient was found with query: LastName=" + lastName + ", DOB=" + dateOfBirth);
     }
 
     // throws PatientNotFoundException
@@ -177,26 +182,11 @@ public class PatientDatabase {
      * We should be able to search patients based on doctor, insurance type, etc.
      * and display these patients in search results
      */
-
-    // ArrayList<Patient>
     /*
-    In addition to the above actions for the individual patient profiles, additional functions allow summary
-    reports to be compiled. These reports can be generated for each of the following fields individually –
-    physician, patient type, insurance type, allergies, and illnesses.
-    For this assignment, you need not consider a combination
-    of these fields.
-
-    These methods return a String list with patient names and phone numbers
-    If no patients match, then return an empty String
-     */
-
-
-    /*
-    Example format:
+     * Example format:
     John Doe - 123-456-7890
     Jane Doe - 909-909-9090
      */
-
 
     public String physicianReport(String physicianName) {
         String result = "";
